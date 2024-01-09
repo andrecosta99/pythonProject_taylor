@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Vídeos de Taylor Swift</title>
+</head>
+<body>
+    <h1>Vídeos de Taylor Swift</h1>
+
+    <!-- Formulário de Filtros -->
+    <form method="post" action="/">
+        <label for="data_inicio">Data Início:</label>
+        <input type="date" id="data_inicio" name="data_inicio">
+
+        <label for="data_fim">Data Fim:</label>
+        <input type="date" id="data_fim" name="data_fim">
+
+        <!-- Add mais campos-->
+
+        <input type="submit" value="Filtrar">
+    </form>
+
+    <!-- Exibição dos Dados -->
+    <table>
+        <tr>
+            <th>Título</th>
+            <th>Data de Publicação</th>
+            <th>Duração</th>
+            <th>Visualizações</th>
+        </tr>
+        {% for video in dados.iterrows() %}
+        <tr>
+            <td>{{ video[1]['title'] }}</td>
+            <td>{{ video[1]['published_at'] }}</td>
+            <td>{{ video[1]['duration'] }}</td>
+            <td>{{ video[1]['view_count'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Exibição do Gráfico -->
+    <img src="data:image/png;base64,{{ plot_url }}" />
+</body>
+</html>
